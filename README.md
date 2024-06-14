@@ -1,22 +1,78 @@
 # Kubernetes Installation
-Run the following commands (master and worker) -
-``` sudo apt update
-``` sudo apt upgrade
+## Master and worker
+### Run the following commands :
 
-### Now run this command -
-``` nano /etc/hostname
-### change the hostname to master in master vm and worker in worker vm
+```bash
+ sudo apt update
+```
 
-### Run this command , and update the /etc/hosts with master and worker ips
-``` nano /etc/hosts
+```bash
+ sudo apt upgrade -y
+```
+
+### Configure the hostname
+Keep the hostname as master for master node and worker for worker node
+```bash
+ nano /etc/hostname
+```
+
+### Update the etc/hosts file:
+```bash
+ nano /etc/hosts
+```
+The etc/hosts should look like this
+```
+something its_ip
+master master_ip
+worker worker_ip
+```
 
 ### Reboot the system
-``` reboot
+```bash
+reboot
+```
 
-### Now, create a script file in master node and run the master.sh script in that node
-### Create a script in worker node(s) and run the worker.sh script in the node
+## Master
+On the master node , create a script and run the **master.sh** script.
+```bash
+nano master.sh
+./master.sh
+```
+On executing *./master.sh* if CLI shows permission denied, then run
+```bash
+chmod +x master.sh
+./master.sh
+```
 
-### if error of unable to locate package kubeadm ,kubelet , kubectl , kubernetes-cni is there, then run the xenial_error.sh script
+## Worker
+On the worker node , create a script and run the **worker.sh** script.
+```bash
+nano worker.sh
+./worker.sh
+```
+
+ If on master or worker node,  error of unable to locate package kubeadm ,kubelet , kubectl , kubernetes-cni is there, then run the **xenial_error.sh** script on master and worker nodes.
+ 
+***
+ #### The master node will generate a key as kubeadm join '-------' copy that key and run it on the worker nodes.
+***
+
+## Master
+On the master , run the following command
+```bash
+kubectl get nodes
+```
+It will show the nodes and in what state(ready/not ready) the nodes are.
+
+Run this command to see the pods
+```bash
+kubectl get pods -A
+```
+
+
+ 
+
+ 
 
 
 
