@@ -51,7 +51,7 @@ nano worker.sh
 ./worker.sh
 ```
 
- If on master or worker node,  error of unable to locate package kubeadm ,kubelet , kubectl , kubernetes-cni is there, then run the **xenial_error.sh** script on master and worker nodes.
+ If on master or worker node,  error of unable to locate package kubeadm ,kubelet , kubectl , kubernetes-cni is there, then run the **xenial_error.sh** script on master and worker nodes. Now, run the **master.sh** in master node and **worker.sh** in worker node again.
  
 ***
  #### The master node will generate a key as kubeadm join '-------' copy that key and run it on the worker nodes.
